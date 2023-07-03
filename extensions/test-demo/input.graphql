@@ -1,0 +1,21 @@
+query Input {
+  cart {
+    lines {
+      id
+      quantity
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+          title
+          expandBundleComponents: metafield(namespace: "bundle", key: "expand_components") {
+            value
+          }
+          expandBundleComponentQuantities: metafield(namespace: "bundle", key: "expand_component_quantities") {
+            value
+          }
+        }
+      }
+    }
+  }
+}
